@@ -184,7 +184,7 @@
             bindings =
                 <&kp LANG_HANJA>,
                 <&macro_wait_time 2>,
-                <&kp LS(T) &kp LS(H) &kp LS(E) &kp SPACE &kp LS(L) &kp LS(I) &kp LS(N) &kp LS(K) &kp LS(P) &kp LS(I) &kp LS(L) &kp LS(L) &kp LS(A) &kp LS(R) &kp N1>;
+                <&kp LS(T) &kp LS(H) &kp LS(E) &kp SPACE &kp LS(L) &kp LS(I) &kp LS(N) &kp LS(K) &kp LS(P) &kp LS(I) &kp LS(L) &kp LS(L) &kp LS(A) &kp LS(R) &kp SPACE &kp NUMBER_1>;
 
             label = "ADRESS";
         };
@@ -197,7 +197,7 @@
                 <&macro_wait_time 2>,
                 <&kp LS(NUMBER_8) &kp LS(NUMBER_9) &kp ENTER &kp LANG_HANJA>,
                 <&macro_wait_time 2>,
-                <&kp LEFT_ARROW &kp LS(J) &kp LS(V) &kp RIGHT &kp LANG1>;
+                <&kp LEFT_ARROW &kp LS(J) &kp LS(R) &kp LS(E) &kp RIGHT &kp LANG1>;
 
             label = "JV";
         };
@@ -232,7 +232,7 @@
             bindings =
                 <&kp LANG_HANJA>,
                 <&macro_wait_time 2>,
-                <&kp P &kp J &kp P &kp J &kp N8 &kp N7 &kp N8 &kp N7 &kp ENTER>;
+                <&kp LS(K) &kp O &kp B &kp A &kp T &kp A &kp K &kp U &kp N8 &kp N3 &kp N1 &kp N9 &kp N9 &kp N1 &kp N6 &kp N7 &kp ENTER>;
 
             label = "PJ";
         };
