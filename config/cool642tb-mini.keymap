@@ -4,10 +4,32 @@
 #include <dt-bindings/zmk/pointing.h>
 
 
-#define MOUSE 4
-#define SCROLL 5
-#define NUM 6
-#define ZMK_POINTING_DEFAULT_SCRL_VAL 80
+#define MOUSE 1
+#define NUM 2
+#define SCROLL 4
+#define JP_DQUOTE       AT                // "
+#define JP_AMPERSAND    CARET             // &
+#define JP_QUOTE        AMPERSAND         // '
+#define JP_EQUAL        UNDER             // =
+#define JP_CARET        EQUAL             // ^
+#define JP_YEN          0x89              // ¥
+#define JP_PLUS         COLON             // +
+#define JP_TILDE        PLUS              // ~
+#define JP_PIPE         LS(0x89)          // |
+#define JP_AT           LEFT_BRACKET      // @
+#define JP_COLON        SINGLE_QUOTE      // :
+#define JP_ASTERISK     DOUBLE_QUOTES     // *
+#define JP_BACKQUOTE    LEFT_BRACE        // `
+#define JP_UNDERSCORE   LS(0x87)          // _
+#define JP_LBRACKET     RIGHT_BRACKET     // [
+#define JP_RBRACKET     BACKSLASH         // ]
+#define JP_LPAREN       ASTERISK          // (
+#define JP_RPAREN       LEFT_PARENTHESIS  // )
+#define JP_LBRACE       RIGHT_BRACE       // {
+#define JP_RBRACE       PIPE              // }
+#define JP_KANA         LANGUAGE_1        // かな
+#define JP_EISU         LANGUAGE_2        // 英数
+#define JP_HANZEN       GRAVE             // 半角/全角
 
 &mt {
     flavor = "balanced";
@@ -18,24 +40,361 @@
     combos {
         compatible = "zmk,combos";
 
-        shift_tab {
-            bindings = <&kp LANG2>;
-            key-positions = <12 13>;
+        comb1tab {
+            bindings = <&kp TAB>;
+            key-positions = <11 10>;
         };
 
-        lang {
-            bindings = <&kp LANG1>;
-            key-positions = <18 19>;
+        comb2esc {
+            bindings = <&kp LS(ESCAPE)>;
+            key-positions = <0 1>;
+        };
+
+        comb3shift {
+            bindings = <&kt LEFT_SHIFT>;
+            key-positions = <22 23>;
+        };
+
+        combo4bksp {
+            bindings = <&kp DELETE>;
+            key-positions = <9 8>;
+        };
+
+        combo5enter {
+            bindings = <&kp ENTER>;
+            key-positions = <20 21>;
+        };
+
+        combo6shift {
+            bindings = <&sk RIGHT_SHIFT>;
+            key-positions = <32 33>;
+        };
+
+        combo7lay4 {
+            bindings = <&sl 4>;
+            key-positions = <40 41>;
+        };
+
+        combo8task {
+            bindings = <&kp LS(LC(ESCAPE))>;
+            key-positions = <0 1 34>;
+        };
+
+        combo9lay4 {
+            bindings = <&sl 4>;
+            key-positions = <39 38>;
+        };
+
+        taskmana {
+            bindings = <&kp LS(LC(ESC))>;
+            key-positions = <0 34 35>;
+        };
+
+        enc {
+            bindings = <&kp BACKSPACE>;
+            key-positions = <39 27>;
+        };
+
+        shiftctrl {
+            bindings = <&sk LS(LEFT_CONTROL)>;
+            key-positions = <34 35>;
+        };
+
+        prev {
+            bindings = <&mkp MB4>;
+            key-positions = <42 33>;
+        };
+
+        encoder {
+            bindings = <&to 5>;
+            key-positions = <28 16>;
+        };
+
+        new {
+            bindings = <&kp LS(LC(N))>;
+            key-positions = <30 29>;
+        };
+    };
+
+    macros {
+        to_layer_0: to_layer_0 {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            bindings = <&to 0 &macro_param_1to1 &kp MACRO_PLACEHOLDER>;
+            label = "TO_LAYER_0";
+        };
+
+        pass1: pass1 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&kp LANG_HANJA>,
+                <&macro_wait_time 2>,
+                <&kp LS(K) &kp O &kp B &kp A &kp T &kp A &kp K &kp U &kp N8 &kp N3 &kp ENTER>;
+
+            label = "PASS1";
+        };
+
+        pass2: pass2 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&kp LANG_HANJA>,
+                <&macro_wait_time 2>,
+                <&kp J &kp R &kp E &kp D &kp N2 &kp N0 &kp N2 &kp N5 &kp ENTER>;
+
+            label = "PASS2";
+        };
+
+        pass3: pass3 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&kp LANG_HANJA>,
+                <&macro_wait_time 2>,
+                <&kp J &kp R &kp E &kp D &kp N2 &kp N0 &kp N1 &kp N9 &kp ENTER>;
+
+            label = "PASS3";
+        };
+
+        mail1: mail1 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&kp LANG_HANJA>,
+                <&macro_wait_time 2>,
+                <&kp T &kp A &kp K &kp MINUS &kp K &kp O &kp B &kp A &kp Y &kp A &kp S &kp H &kp H &kp I &kp JP_AT &kp J &kp R &kp E &kp D &kp DOT &kp C &kp O &kp DOT &kp J &kp P>;
+
+            label = "MAIL1";
+        };
+
+        mail2: mail2 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&kp LANG_HANJA>,
+                <&macro_wait_time 2>,
+                <&kp T &kp A &kp K &kp U &kp N8 &kp N3 &kp JP_AT &kp I &kp C &kp L &kp O &kp U &kp D &kp DOT &kp C &kp O &kp M>;
+
+            label = "MAIL2";
+        };
+
+        LP1: adress {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&kp LANG_HANJA>,
+                <&macro_wait_time 2>,
+                <&kp LS(T) &kp LS(H) &kp LS(E) &kp SPACE &kp LS(L) &kp LS(I) &kp LS(N) &kp LS(K) &kp LS(P) &kp LS(I) &kp LS(L) &kp LS(L) &kp LS(A) &kp LS(R) &kp N1 &kp SPACE &kp LS(S) &kp LS(O) &kp LS(U) &kp LS(T) &kp LS(H) &kp SPACE &kp N1 &kp N2 &kp LS(F)>;
+
+            label = "ADRESS";
+        };
+
+        JV: JV {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&kp LANGUAGE_1>,
+                <&macro_wait_time 2>,
+                <&kp LS(NUMBER_8) &kp LS(NUMBER_9) &kp ENTER &kp LANG_HANJA>,
+                <&macro_wait_time 2>,
+                <&kp LEFT_ARROW &kp LS(J) &kp LS(V) &kp RIGHT &kp LANG1>;
+
+            label = "JV";
+        };
+
+        JR: JR {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&kp LANGUAGE_1>,
+                <&macro_wait_time 2>,
+                <&kp LS(NUMBER_8) &kp LS(NUMBER_9) &kp ENTER &kp LANG_HANJA>,
+                <&macro_wait_time 2>,
+                <&kp LEFT_ARROW &kp LS(J) &kp LS(R) &kp RIGHT &kp LANGUAGE_1>;
+
+            label = "JR";
+        };
+
+        machi: machi {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&kp LANGUAGE_1>,
+                <&macro_wait_time 2>,
+                <&kp LS(NUMBER_8) &kp LS(NUMBER_9) &kp ENTER &kp LEFT_ARROW &kp M &kp A &kp C &kp H &kp I &kp S &kp E &kp N &kp N &kp SPACE &kp ENTER &kp RIGHT &kp LANGUAGE_1>;
+
+            label = "MACHI";
+        };
+
+        pass4: pj {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&kp LANG_HANJA>,
+                <&macro_wait_time 2>,
+                <&kp P &kp J &kp P &kp J &kp N8 &kp N7 &kp N8 &kp N7 &kp ENTER>;
+
+            label = "PJ";
+        };
+
+        kakko: kakko {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&kp LANGUAGE_1>,
+                <&macro_wait_time 2>,
+                <&kp K &kp A &kp K &kp K &kp O &kp SPACE &kp ENTER &kp LEFT>;
+
+            label = "KAKKO";
+        };
+
+        undo: undo {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LANG_HANJA>, <&macro_wait_time 1>, <&kp LC(Z)>;
+
+            label = "UNDO";
+        };
+
+        cut: cut {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LANG_HANJA>, <&macro_wait_time 1>, <&kp LC(X)>;
+
+            label = "CUT";
+        };
+
+        copy: copy {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LANG_HANJA>, <&macro_wait_time 1>, <&kp LC(C)>;
+
+            label = "COPY";
+        };
+
+        paste: paste {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LANG_HANJA>, <&macro_wait_time 1>, <&kp LC(V)>;
+
+            label = "PASTE";
+        };
+
+        big: big {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LANG_HANJA>, <&macro_wait_time 1>, <&kp LC(B)>;
+
+            label = "BIG";
+        };
+
+        Notepad: Notepad {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&kp LANG_HANJA>,
+                <&macro_wait_time 100>,
+                <&kp LG(R)>,
+                <&macro_wait_time 20>,
+                <&kp N &kp O &kp T &kp E &kp P &kp A &kp D &kp ENTER>;
+
+            label = "NOTEPAD";
+        };
+
+        open: open {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&kp LANG_HANJA>,
+                <&macro_wait_time 2>,
+                <&kp LC(C)>,
+                <&macro_wait_time 5>,
+                <&kp LG(R)>,
+                <&macro_wait_time 30>,
+                <&kp LC(V) &kp ENTER>;
+
+            label = "OPEN";
+        };
+
+        kakklink: kakklink {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&kp LANG_HANJA>,
+                <&macro_wait_time 2>,
+                <&kp LESS_THAN &kp GREATER_THAN &kp LEFT_ARROW &kp LC(V) &kp RIGHT_ARROW &kp ENTER>;
+
+            label = "KAKKLINK";
+        };
+
+        name: name {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&kp LANG_HANJA>,
+                <&macro_wait_time 2>,
+                <&kp F2 &kp LEFT_ARROW &kp LC(V)>,
+                <&macro_wait_time 5>,
+                <&kp ENTER>;
+
+            label = "NAME";
         };
     };
 
     behaviors {
+        lt_to_layer_0: lt_to_layer_0 {
+            compatible = "zmk,behavior-hold-tap";
+            label = "LAYER_TAP_TO_0";
+            bindings = <&mo>, <&to_layer_0>;
+
+            #binding-cells = <2>;
+            quick-tap-ms = <50>;
+            require-prior-idle-ms = <(-1)>;
+            tapping-term-ms = <200>;
+        };
+
+        hold_tap: hold_tap {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOLD_TAP";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            quick-tap-ms = <50>;
+            require-prior-idle-ms = <(-1)>;
+            tapping-term-ms = <200>;
+        };
+
+        mouse_key_press: mouse_key_press {
+            compatible = "zmk,behavior-mouse-key-press";
+            label = "MOUSE_KEY_PRESS";
+            #binding-cells = <1>;
+        };
+
+        axis: axis {
+            compatible = "zmk,behavior-input-two-axis";
+            label = "AXIS";
+            #binding-cells = <1>;
+            x-input-code = <5>;
+            y-input-code = <5>;
+            time-to-max-speed-ms = <0>;
+        };
+
         encoder_msc_down_up: encoder_msc_down_up {
             compatible = "zmk,behavior-sensor-rotate";
             label = "ENCODER_MSC_DOWN_UP";
             #sensor-binding-cells = <0>;
-            bindings = <&msc SCRL_UP>,<&msc SCRL_DOWN>;
+            bindings = <&msc SCRL_DOWN>, <&msc SCRL_UP>;
+
             tap-ms = <20>;
+        };
+
+        mouse_scrl: mouse_wheel_scrl {
+            compatible = "zmk,behavior-sensor-rotate-var";
+            #sensor-binding-cells = <2>;
+            bindings = <&msc>, <&msc>;
+
+            tap-ms = <10>;
         };
     };
 
@@ -45,78 +404,68 @@
 
         default_layer {
             bindings = <
-&kp Q               &kp W       &kp E         &kp R         &kp T                                                    &kp Y        &kp U  &kp I      &kp O    &kp P
-&mt LEFT_WIN A      &kp S       &kp D         &lt 4 F       &kp G        &kp LC(Y)              &kp PRINTSCREEN      &kp H        &kp J  &lt 5 K    &kp L    &kp SEMICOLON
-&mt LEFT_CONTROL Z  &kp X       &kp C         &kp V         &kp B        &kp LC(Z)              &kp ESC              &kp N        &kp M  &kp COMMA  &kp DOT  &kp SLASH
-&kp TAB             &kp C_MUTE  &kp LEFT_GUI  &kp LEFT_ALT  &lt 2 SPACE  &mt LSHIFT DELETE      &mt RSHFT BACKSPACE  &lt 1 ENTER                             &kp F4
+&kp Q             &kp W         &kp E         &kp R                            &kp T                                                   &kp Y                   &kp U  &kp I     &kp O     &lt 2 P
+&kp A             &kp S         &kp D         &kp F                            &kp G                        &kp ENTER  &kp LANGUAGE_1  &kp H                   &kp J  &kp K     &kp L     &mo 4
+&kp Z             &kp X         &kp C         &kp V                            &kp B                        &kp ENTER  &kp LANG_HANJA  &kp N                   &kp M  &mkp MB1  &mkp MB3  &mkp MB2
+&kp LEFT_CONTROL  &kp LEFT_WIN  &kp LEFT_ALT  &hold_tap LEFT_SHIFT LANG_HANJA  &lt_to_layer_0 2 LANGUAGE_1  &kp SPACE  &kp BACKSPACE   &lt_to_layer_0 3 ENTER                             &hold_tap RIGHT_CONTROL LA(LEFT_ARROW)
             >;
 
-            sensor-bindings = <&encoder_msc_down_up>;
-        };
-
-        FUNCTION {
-            bindings = <
-&kp N1    &kp N2     &kp N3     &kp N4     &kp N5                              &kp N6     &kp N7    &kp N8    &kp N9        &kp N0
-&kp PLUS  &kp MINUS  &kp ASTRK  &kp SLASH  &kp EQUAL  &kp UNDER      &kp HOME  &kp ENTER  &kp LEFT  &kp DOWN  &kp UP_ARROW  &kp RIGHT
-&kp F1    &kp F2     &kp F3     &kp F4     &kp F5     &trans         &trans    &kp F6     &kp F7    &kp F8    &kp F9        &kp F10
-&trans    &trans     &trans     &trans     &trans     &trans         &trans    &trans                                       &kp F11
-            >;
-        };
-
-        NUM {
-            bindings = <
-&kp LS(EXCL)  &kp AT        &kp LS(POUND)  &kp LS(DLLR)  &kp LS(PRCNT)                              &kp CARET    &kp AMPERSAND  &kp LS(UNDER)  &kp TILDE     &kp MINUS
-&kp SQT       &kp LS(LBRC)  &kp LBKT       &kp LS(LPAR)  &kp LS(DQT)    &kp LS(LT)      &kp LS(GT)  &kp LS(DQT)  &kp LS(RPAR)   &kp RBKT       &kp LS(RBRC)  &kp SQT
-&bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2   &bt BT_SEL 3  &bt BT_SEL 4   &trans          &trans      &trans       &trans         &trans         &kp PIPE      &kp BACKSLASH
-&bt BT_CLR    &trans        &trans         &trans        &trans         &trans          &trans      &trans                                                   &trans
-            >;
-        };
-
-        ARROW {
-            bindings = <
-&trans  &trans  &trans  &trans  &trans                      &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans                          &trans
-            >;
-
-            sensor-bindings = <&inc_dec_kp LC(PAGE_UP) LC(PAGE_DOWN)>;
+            sensor-bindings = <&inc_dec_kp UP_ARROW DOWN_ARROW>;
         };
 
         MOUSE {
             bindings = <
-&trans  &trans  &trans  &trans  &trans                      &trans  &trans    &trans  &trans    &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &mkp MB1  &trans  &mkp MB2  &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans    &trans  &trans    &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans                              &trans
+&trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans    &trans    &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans    &mo 4
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &mkp MB1  &mkp MB3  &mkp MB2
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans                              &trans
             >;
+
+            sensor-bindings = <&inc_dec_kp UP_ARROW DOWN_ARROW>;
+        };
+
+        NUM_SIGN {
+            bindings = <
+&kp ESCAPE   &kp EXCLAMATION    &kp AT_SIGN       &kp HASH          &kp DOLLAR                             &kp SLASH             &kp N7        &kp N8        &kp N9        &kp MINUS
+&kp TAB      &kp PERCENT        &kp LS(NUMBER_6)  &kp LS(NUMBER_7)  &kp JP_BACKQUOTE  &trans  &kp INT_YEN  &kp LS(SINGLE_QUOTE)  &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp KP_PLUS
+&kp INT_YEN  &kp RIGHT_BRACKET  &kp JP_RBRACKET   &kp LS(NUMBER_8)  &kp LS(NUMBER_9)  &trans  &kp DOT      &kp NUMBER_0          &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp UNDER
+&trans       &trans             &trans            &trans            &trans            &trans  &kp DEL      &trans                                                          &kp PERIOD
+            >;
+
+            sensor-bindings = <&inc_dec_kp UP_ARROW DOWN_ARROW>;
+        };
+
+        FUNCTION+ARROW {
+            bindings = <
+&kp F1   &kp F2   &kp F3     &kp F4         &kp F5                            &kp SEMICOLON     &kp MINUS   &kp UP           &kp JP_TILDE  &kp QUESTION
+&kp F6   &kp F7   &kp F8     &kp F9         &kp F10           &trans  &trans  &kp SINGLE_QUOTE  &kp LEFT    &kp DOWN         &kp RIGHT     &kp JP_AT
+&kp F11  &kp F12  &kp EQUAL  &kp LESS_THAN  &kp GREATER_THAN  &trans  &trans  &kp COMMA         &kp PERIOD  &kp LC(LS(TAB))  &kp LC(W)     &kp LC(TAB)
+&trans   &trans   &trans     &trans         &trans            &trans  &trans  &trans                                                       &kp JP_UNDERSCORE
+            >;
+
+            sensor-bindings = <&inc_dec_kp UP_ARROW DOWN>;
         };
 
         SCROLL {
             bindings = <
-&trans  &trans  &trans  &trans  &trans                      &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans                          &trans
+&kp ESC  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &JV                           &kp LG(LS(S))  &mail1  &mail2  &open  &pass4
+&trans   &bt BT_SEL 3  &bt BT_SEL 4  &trans        &machi  &kakko     &kakko     &pass3         &pass2  &pass1  &LP1   &mo 4
+&undo    &cut          &copy         &paste        &JR     &kakklink  &kakklink  &Notepad       &name   &cut    &copy  &paste
+&trans   &trans        &trans        &trans        &trans  &trans     &trans     &trans                                &trans
             >;
+
+            sensor-bindings = <&inc_dec_kp C_VOLUME_DOWN C_VOLUME_UP>;
         };
 
-        layer_6 {
+        encoder {
             bindings = <
-&trans  &trans  &trans  &trans  &trans                      &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans                          &trans
+&trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &to 0   &to 0   &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &to 0   &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans                          &trans
             >;
-        };
 
-        layer_7 {
-            bindings = <
-&trans  &trans  &trans  &trans  &trans                      &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans                          &trans
-            >;
+            sensor-bindings = <&inc_dec_kp C_BRIGHTNESS_DEC C_BRIGHTNESS_INC>;
         };
     };
 };
