@@ -3,7 +3,6 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/pointing.h>
 
-
 #define MOUSE 1
 #define NUM 2
 #define SCROLL 4
@@ -185,7 +184,7 @@
             bindings =
                 <&kp LANG_HANJA>,
                 <&macro_wait_time 2>,
-                <&kp LS(T) &kp LS(H) &kp LS(E) &kp SPACE &kp LS(L) &kp LS(I) &kp LS(N) &kp LS(K) &kp LS(P) &kp LS(I) &kp LS(L) &kp LS(L) &kp LS(A) &kp LS(R) &kp N1 &kp SPACE &kp LS(S) &kp LS(O) &kp LS(U) &kp LS(T) &kp LS(H) &kp SPACE &kp N1 &kp N2 &kp LS(F)>;
+                <&kp LS(T) &kp LS(H) &kp LS(E) &kp SPACE &kp LS(L) &kp LS(I) &kp LS(N) &kp LS(K) &kp LS(P) &kp LS(I) &kp LS(L) &kp LS(L) &kp LS(A) &kp LS(R) &kp N1>;
 
             label = "ADRESS";
         };
@@ -403,10 +402,10 @@
 
         default_layer {
             bindings = <
-&kp Q             &kp W         &kp E         &kp R                            &kp T                                                   &kp Y                   &kp U  &kp I     &kp O     &lt 2 P
-&kp A             &kp S         &kp D         &kp F                            &kp G                        &kp ENTER  &kp LANGUAGE_1  &kp H                   &kp J  &kp K     &kp L     &mo 4
-&kp Z             &kp X         &kp C         &kp V                            &kp B                        &kp ENTER  &kp LANG_HANJA  &kp N                   &kp M  &mkp MB1  &mkp MB3  &mkp MB2
-&kp LEFT_CONTROL  &kp LEFT_WIN  &kp LEFT_ALT  &hold_tap LEFT_SHIFT LANG_HANJA  &lt_to_layer_0 2 LANGUAGE_1  &kp SPACE  &kp BACKSPACE   &lt_to_layer_0 3 ENTER                             &hold_tap RIGHT_CONTROL LA(LEFT_ARROW)
+&kp Q             &kp W         &kp E         &kp R                            &kp T                                                       &kp Y                   &kp U  &kp I     &kp O     &lt 2 P
+&kp A             &kp S         &kp D         &kp F                            &kp G                        &kp ENTER      &kp LANGUAGE_1  &kp H                   &kp J  &kp K     &kp L     &mo 4
+&kp Z             &kp X         &kp C         &kp V                            &kp B                        &kp ENTER      &kp LANG_HANJA  &kp N                   &kp M  &mkp MB1  &mkp MB3  &mkp MB2
+&kp LEFT_CONTROL  &kp LEFT_WIN  &kp LEFT_ALT  &hold_tap LEFT_SHIFT LANG_HANJA  &lt_to_layer_0 2 LANGUAGE_1  &kp SPACE      &kp BACKSPACE   &lt_to_layer_0 3 ENTER                             &hold_tap RIGHT_CONTROL LA(LEFT_ARROW)
             >;
 
             sensor-bindings = <&inc_dec_kp UP_ARROW DOWN_ARROW>;
@@ -414,10 +413,10 @@
 
         MOUSE {
             bindings = <
-&trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans    &trans    &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans    &mo 4
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &mkp MB1  &mkp MB3  &mkp MB2
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans                              &trans
+&trans  &trans  &trans  &trans  &trans                      &trans  &trans  &trans    &trans    &trans
+&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans    &trans    &mo 4
+&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans  &mkp MB1  &mkp MB3  &mkp MB2
+&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans                              &trans
             >;
 
             sensor-bindings = <&inc_dec_kp UP_ARROW DOWN_ARROW>;
@@ -425,10 +424,10 @@
 
         NUM_SIGN {
             bindings = <
-&kp ESCAPE   &kp EXCLAMATION    &kp AT_SIGN       &kp HASH          &kp DOLLAR                             &kp SLASH             &kp N7        &kp N8        &kp N9        &kp MINUS
-&kp TAB      &kp PERCENT        &kp LS(NUMBER_6)  &kp LS(NUMBER_7)  &kp JP_BACKQUOTE  &trans  &kp INT_YEN  &kp LS(SINGLE_QUOTE)  &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp KP_PLUS
-&kp INT_YEN  &kp RIGHT_BRACKET  &kp JP_RBRACKET   &kp LS(NUMBER_8)  &kp LS(NUMBER_9)  &trans  &kp DOT      &kp NUMBER_0          &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp UNDER
-&trans       &trans             &trans            &trans            &trans            &trans  &kp DEL      &trans                                                          &kp PERIOD
+&kp ESCAPE   &kp EXCLAMATION    &kp AT_SIGN       &kp HASH          &kp DOLLAR                                 &kp SLASH             &kp N7        &kp N8        &kp N9        &kp MINUS
+&kp TAB      &kp PERCENT        &kp LS(NUMBER_6)  &kp LS(NUMBER_7)  &kp JP_BACKQUOTE  &trans      &kp INT_YEN  &kp LS(SINGLE_QUOTE)  &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp KP_PLUS
+&kp INT_YEN  &kp RIGHT_BRACKET  &kp JP_RBRACKET   &kp LS(NUMBER_8)  &kp LS(NUMBER_9)  &trans      &kp DOT      &kp NUMBER_0          &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp UNDER
+&trans       &trans             &trans            &trans            &trans            &trans      &kp DEL      &trans                                                          &kp PERIOD
             >;
 
             sensor-bindings = <&inc_dec_kp UP_ARROW DOWN_ARROW>;
@@ -436,10 +435,10 @@
 
         FUNCTION+ARROW {
             bindings = <
-&kp F1   &kp F2   &kp F3     &kp F4         &kp F5                            &kp SEMICOLON     &kp MINUS   &kp UP           &kp JP_TILDE  &kp QUESTION
-&kp F6   &kp F7   &kp F8     &kp F9         &kp F10           &trans  &trans  &kp SINGLE_QUOTE  &kp LEFT    &kp DOWN         &kp RIGHT     &kp JP_AT
-&kp F11  &kp F12  &kp EQUAL  &kp LESS_THAN  &kp GREATER_THAN  &trans  &trans  &kp COMMA         &kp PERIOD  &kp LC(LS(TAB))  &kp LC(W)     &kp LC(TAB)
-&trans   &trans   &trans     &trans         &trans            &trans  &trans  &trans                                                       &kp JP_UNDERSCORE
+&kp F1   &kp F2   &kp F3     &kp F4         &kp F5                                &kp SEMICOLON     &kp MINUS   &kp UP           &kp JP_TILDE  &kp QUESTION
+&kp F6   &kp F7   &kp F8     &kp F9         &kp F10           &trans      &trans  &kp SINGLE_QUOTE  &kp LEFT    &kp DOWN         &kp RIGHT     &kp JP_AT
+&kp F11  &kp F12  &kp EQUAL  &kp LESS_THAN  &kp GREATER_THAN  &trans      &trans  &kp COMMA         &kp PERIOD  &kp LC(LS(TAB))  &kp LC(W)     &kp LC(TAB)
+&trans   &trans   &trans     &trans         &trans            &trans      &trans  &trans                                                       &kp JP_UNDERSCORE
             >;
 
             sensor-bindings = <&inc_dec_kp UP_ARROW DOWN>;
@@ -447,10 +446,10 @@
 
         SCROLL {
             bindings = <
-&kp ESC  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &JV                           &kp LG(LS(S))  &mail1  &mail2  &open  &pass4
-&trans   &bt BT_SEL 3  &bt BT_SEL 4  &trans        &machi  &kakko     &kakko     &pass3         &pass2  &pass1  &LP1   &mo 4
-&undo    &cut          &copy         &paste        &JR     &kakklink  &kakklink  &Notepad       &name   &cut    &copy  &paste
-&trans   &trans        &trans        &trans        &trans  &trans     &trans     &trans                                &trans
+&kp ESC  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &JV                               &kp LG(LS(S))  &mail1  &mail2  &open  &pass4
+&trans   &bt BT_SEL 3  &bt BT_SEL 4  &trans        &machi  &kakko         &kakko     &pass3         &pass2  &pass1  &LP1   &mo 4
+&undo    &cut          &copy         &paste        &JR     &kakklink      &kakklink  &Notepad       &name   &cut    &copy  &paste
+&trans   &trans        &trans        &trans        &trans  &trans         &trans     &trans                                &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOLUME_DOWN C_VOLUME_UP>;
@@ -458,10 +457,10 @@
 
         encoder {
             bindings = <
-&trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &to 0   &to 0   &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &to 0   &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans                          &trans
+&trans  &trans  &trans  &trans  &trans                      &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &to 0       &to 0   &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans      &to 0   &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans                          &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_BRIGHTNESS_DEC C_BRIGHTNESS_INC>;
